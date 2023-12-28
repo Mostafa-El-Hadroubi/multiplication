@@ -24,6 +24,10 @@
     let input = document.getElementById('number');
     let id = document.getElementById('multiplication');
     let data = {};
+    if(localStorage.length > 0){
+      data = {...JSON.parse(localStorage.getItem('keyname'))};
+    }
+    
     id.addEventListener('change', function(ev){
       console.log(ev.target.value);
       console.log(typeof(parseInt(input.value)));
@@ -35,7 +39,7 @@
       data[`${input.value} * ${ev.target.value}`] = res;
       localStorage.setItem('keyname', JSON.stringify(data))
     })
-    localStorage.getItem('keyname');
+    
     // localStorage.clear();
   </script>
 </body>

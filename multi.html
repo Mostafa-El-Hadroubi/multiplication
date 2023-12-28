@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="number" id="number">
+  <select name="multiplication" id="multiplication">
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+  </select>
+  <div class="result"></div>
+  <script>
+    
+    let input = document.getElementById('number');
+    let id = document.getElementById('multiplication');
+    let data = {};
+    id.addEventListener('change', function(ev){
+      console.log(ev.target.value);
+      console.log(typeof(parseInt(input.value)));
+      console.log(typeof(parseInt(ev.target.value)));
+      let result = document.querySelector('.result');
+      let res = parseInt(input.value) * parseInt(ev.target.value);
+      console.log(res);
+      result.innerHTML = `${input.value} * ${ev.target.value} = ${res}`;
+      data[`${input.value} * ${ev.target.value}`] = res;
+      localStorage.setItem('keyname', JSON.stringify(data))
+    })
+    localStorage.getItem('keyname');
+    // localStorage.clear();
+  </script>
+</body>
+</html>
